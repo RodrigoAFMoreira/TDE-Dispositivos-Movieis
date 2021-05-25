@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView mImagemView;
     Button mEscolherBtn;
     Button mPretoeBrancoBtn;
-    Button mCamera_btn;
+    //Button mCamera_btn;
 
     private static final int IMAGE_PICK_CODE = 1;
     private static final int PERMISSION_CODE = 2;
