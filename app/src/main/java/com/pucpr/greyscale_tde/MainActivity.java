@@ -14,6 +14,7 @@ import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView mImagemView;
     Button mEscolherBtn;
     Button mPretoeBrancoBtn;
-    //Button mCamera_btn;
+    Button mCamera_btn;
+    private static final int REQUEST_IMAGE_CAPTURE =101;
 
     private static final int IMAGE_PICK_CODE = 1;
     private static final int PERMISSION_CODE = 2;
@@ -37,21 +39,8 @@ public class MainActivity extends AppCompatActivity {
         mImagemView = findViewById(R.id.image_view);
         mEscolherBtn = findViewById(R.id.escolher_imagem_btn);
         mPretoeBrancoBtn = findViewById(R.id.greyscale_btn);
-        //mCamera_btn = findViewById(R.id.camera_btn);
+        mCamera_btn = findViewById(R.id.camera_btn);
 
-        //A camera no momento não está funcionando
-
-        //if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-            //ActivityCompat.requestPermissions(MainActivity.this,
-                    //new String[]{
-                            //Manifest.permission.CAMERA
-                    //},
-                    //100);
-                    //Bitmap captureImage = (Bitmap) data.getExtras().get("data");
-                    //mImagemView.setImageBitmap(captureImage);
-        //}
-
-        //Botão escolher imagem da galeria
         mEscolherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +74,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void Camera(View view)
+    {
+        Intent imageTakeIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        if(imageTakeIntent.resolveActivity(getPackageManager())!=null){
+            startActivityForResult(imageTakeIntent,REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+
     private void escolherImagemDaGalleria(){
         //intent para pegar imagem
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -116,6 +115,11 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             mImagemView.setImageURI(data.getData());
+        }
+        if(requestCode==REQUEST_IMAGE_CAPTURE && resultCode==RESULT_OK){
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap= (Bitmap) extras.get("data");
+            mImagemView.setImageBitmap(imageBitmap);
         }
     }
 
