@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/selecionar_gallery_img"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal">
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id ="@+id/image_view"
+        android:src="@drawable/ic_baseline_image_24"
+        android:scaleType="centerCrop"
+        android:layout_width="400dp"
+        android:layout_height="400dp" />
+
+    <!-- Não funciona -->
+    <!--<Button
+        android:id="@+id/camera_btn"
+        android:text="Camera"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />-->
+
+    <Button
+        android:id="@+id/escolher_imagem_btn"
+        android:text="Escolher Imagem"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:id="@+id/greyscale_btn"
+        android:text="Preto e Branco"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>
+
