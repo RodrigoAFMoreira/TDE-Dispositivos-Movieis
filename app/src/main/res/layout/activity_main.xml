@@ -19,7 +19,7 @@
     <!-- funciona -->
     <Button
         android:id="@+id/camera_btn"
-        android:text="Camera"
+        android:text="@string/camerabtn"
         android:onClick="Camera"
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
@@ -28,14 +28,14 @@
 
     <Button
         android:id="@+id/escolher_imagem_btn"
-        android:text="Escolher Imagem"
+        android:text="@string/escolher_imagembtn"
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
     <Button
         android:id="@+id/greyscale_btn"
-        android:text="Preto e Branco"
+        android:text="@string/preto_e_brancobtn"
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
